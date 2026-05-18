@@ -180,6 +180,11 @@
   var btn         = document.getElementById('btnSubmit');
   var successState = document.getElementById('successState');
 
+  function notifyHeight() {
+    window.parent.postMessage({ iframeHeight: document.body.scrollHeight }, '*');
+  }
+  notifyHeight();
+
   btn.addEventListener('click', function() {
 
     // Limpiar errores
@@ -228,8 +233,7 @@
     }).then(function() {
       form.style.display = 'none';
       successState.style.display = 'block';
-      // Ajustar altura del iframe si está embebido
-      window.parent.postMessage({ iframeHeight: document.body.scrollHeight }, '*');
+      notifyHeight();
     }).catch(function() {
       alert('Hubo un error al enviar. Intenta nuevamente.');
       btn.textContent = 'Hablar con un asesor comercial';
