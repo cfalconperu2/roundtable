@@ -3,251 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro — Simulation Roundtable Ansys</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <title>Asesor Comercial — Simulation Roundtable Ansys</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { overflow-x: hidden; height: fit-content; }
     body {
       font-family: 'DM Sans', Helvetica, Arial, sans-serif;
       background: transparent;
-      color: #1e293b;
       padding: 0;
     }
-    .page-wrap {
+    .page-wrap { width: 100%; }
+    #btnWhatsApp {
+      display: block;
       width: 100%;
-    }
-    /* Card */
-    .card {
-      background: #ffffff; border: 1px solid #e2e8f0;
-      border-radius: 16px; padding: 2rem;
-      position: relative; overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-    }
-    .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, #3bdfd6, transparent); }
-    /* Fields */
-    .field { margin-bottom: 1.25rem; }
-    .field:last-of-type { margin-bottom: 1.5rem; }
-    label { display: block; font-size: 0.75rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.45rem; }
-    label span { color: #3bdfd6; }
-    input, select {
-      width: 100%; padding: 0.75rem 1rem;
-      font-family: 'DM Sans', Helvetica, Arial, sans-serif; font-size: 0.95rem;
-      color: #0f172a; background: #f8fafc;
-      border: 1.5px solid #e2e8f0; border-radius: 10px;
-      outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
-    }
-    input:focus, select:focus {
-      border-color: #3bdfd6;
-      box-shadow: 0 0 0 3px rgba(59,223,214,0.15);
-      background: #ffffff;
-    }
-    .phone-row { display: flex; gap: 0.5rem; }
-    .phone-row select { width: 160px; flex-shrink: 0; font-size: 0.85rem; }
-    .phone-row input { flex: 1; }
-    .err-msg { display: none; font-size: 0.75rem; color: #ef4444; margin-top: 0.3rem; }
-    /* Button */
-    #btnSubmit {
-      width: 100%; padding: 0.9rem;
+      padding: 0.9rem;
       font-family: 'DM Sans', Helvetica, Arial, sans-serif;
-      font-size: 1rem; font-weight: 700; color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
       background: linear-gradient(135deg, #3bdfd6, #2ec4bc);
-      border: none; border-radius: 10px; cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
       box-shadow: 0 4px 14px rgba(59,223,214,0.35);
+      text-align: center;
+      text-decoration: none;
       transition: opacity 0.15s;
     }
-    #btnSubmit:disabled { opacity: 0.6; cursor: not-allowed; }
-    /* Success */
-    #successState { display: none; text-align: center; padding: 2rem 1rem; }
-    .success-icon {
-      width: 64px; height: 64px; background: rgba(16,185,129,0.08);
-      border: 2px solid #10b981; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.25rem;
-    }
-    #successState h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #0f172a; }
-    #successState p { color: #64748b; font-size: 0.9rem; line-height: 1.5; }
-    /* Footer */
-    .footer { text-align: center; margin-top: 1.25rem; font-size: 0.75rem; color: #94a3b8; }
-    .footer a { color: #3bdfd6; text-decoration: none; }
-    /* Error state on inputs */
-    input.has-error, select.has-error {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
-    }
+    #btnWhatsApp:hover { opacity: 0.88; }
   </style>
 </head>
 <body>
 <div class="page-wrap">
-
-  <!-- CARD -->
-  <div class="card">
-    <div class="card-accent"></div>
-
-    <div id="registroForm">
-
-      <div class="field">
-        <label>Nombre completo <span>*</span></label>
-        <input type="text" name="nombre" placeholder="Ej. María López Gutiérrez">
-        <span class="err-msg">Ingresa tu nombre completo</span>
-      </div>
-
-      <div class="field">
-        <label>Correo electrónico <span>*</span></label>
-        <input type="email" name="email" placeholder="tu@empresa.com">
-        <span class="err-msg">Ingresa un correo válido</span>
-      </div>
-
-      <div class="field">
-        <label>Empresa / Organización <span>*</span></label>
-        <input type="text" name="empresa" placeholder="Nombre de tu empresa">
-        <span class="err-msg">Ingresa tu empresa u organización</span>
-      </div>
-
-      <div class="field">
-        <label>Cargo <span>*</span></label>
-        <input type="text" name="cargo" placeholder="Ej. Jefe de Ingeniería">
-        <span class="err-msg">Ingresa tu cargo</span>
-      </div>
-
-      <div class="field">
-        <label>Teléfono / WhatsApp <span>*</span></label>
-        <div class="phone-row">
-          <select name="prefijo">
-            <optgroup label="Sudamérica">
-              <option value="51" selected>Perú (+51)</option>
-              <option value="54">Argentina (+54)</option>
-              <option value="591">Bolivia (+591)</option>
-              <option value="55">Brasil (+55)</option>
-              <option value="56">Chile (+56)</option>
-              <option value="57">Colombia (+57)</option>
-              <option value="593">Ecuador (+593)</option>
-              <option value="592">Guyana (+592)</option>
-              <option value="595">Paraguay (+595)</option>
-              <option value="597">Surinam (+597)</option>
-              <option value="598">Uruguay (+598)</option>
-              <option value="58">Venezuela (+58)</option>
-            </optgroup>
-            <optgroup label="Centroamérica">
-              <option value="501">Belice (+501)</option>
-              <option value="506">Costa Rica (+506)</option>
-              <option value="503">El Salvador (+503)</option>
-              <option value="502">Guatemala (+502)</option>
-              <option value="504">Honduras (+504)</option>
-              <option value="52">México (+52)</option>
-              <option value="505">Nicaragua (+505)</option>
-              <option value="507">Panamá (+507)</option>
-            </optgroup>
-            <optgroup label="Norteamérica">
-              <option value="1">EE.UU. (+1)</option>
-              <option value="1">Canadá (+1)</option>
-            </optgroup>
-            <optgroup label="Caribe">
-              <option value="53">Cuba (+53)</option>
-              <option value="1">Rep. Dominicana (+1)</option>
-              <option value="509">Haití (+509)</option>
-              <option value="1">Jamaica (+1)</option>
-              <option value="1">Puerto Rico (+1)</option>
-              <option value="1">Trinidad y Tobago (+1)</option>
-            </optgroup>
-          </select>
-          <input type="tel" name="telefono" placeholder="987 654 321">
-        </div>
-        <span class="err-msg">Ingresa tu número de teléfono</span>
-      </div>
-
-      <button type="button" id="btnSubmit">Hablar con un asesor comercial</button>
-
-    </div><!-- /#registroForm -->
-
-    <!-- SUCCESS -->
-    <div id="successState">
-      <div class="success-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      </div>
-      <p>Te contactaremos pronto</p>
-    </div>
-  </div>
-
-</div><!-- /.page-wrap -->
+  <a id="btnWhatsApp"
+     href="https://wa.me/51994984981"
+     target="_blank"
+     rel="noopener noreferrer">
+    Hablar con un asesor comercial
+  </a>
+</div>
 
 <script>
 (function() {
-  var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyqGRHKN1Yl_dWqArR4Trw5gAfxAZ7luaW83tVvZ12yWxdICadRfyIXgTXkODwDFhUJQw/exec';
-
-  var form        = document.getElementById('registroForm');
-  var btn         = document.getElementById('btnSubmit');
-  var successState = document.getElementById('successState');
-
   function notifyHeight() {
     window.parent.postMessage({ iframeHeight: document.body.scrollHeight }, '*');
   }
   notifyHeight();
-
-  btn.addEventListener('click', function() {
-
-    // Limpiar errores
-    form.querySelectorAll('.err-msg').forEach(function(el) { el.style.display = 'none'; });
-    form.querySelectorAll('.has-error').forEach(function(el) { el.classList.remove('has-error'); });
-
-    var inNombre   = form.querySelector('[name="nombre"]');
-    var inEmail    = form.querySelector('[name="email"]');
-    var inEmpresa  = form.querySelector('[name="empresa"]');
-    var inCargo    = form.querySelector('[name="cargo"]');
-    var inTelefono = form.querySelector('[name="telefono"]');
-    var inPrefijo  = form.querySelector('[name="prefijo"]');
-
-    var nombre   = inNombre.value.trim();
-    var email    = inEmail.value.trim();
-    var empresa  = inEmpresa.value.trim();
-    var cargo    = inCargo.value.trim();
-    var telefono = inTelefono.value.trim();
-    var prefijo  = inPrefijo.value;
-    var valid    = true;
-
-    if (!nombre)  { showError(inNombre);  valid = false; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError(inEmail); valid = false; }
-    if (!empresa) { showError(inEmpresa); valid = false; }
-    if (!cargo)   { showError(inCargo);   valid = false; }
-    if (!telefono){ showError(inTelefono); valid = false; }
-
-    if (!valid) return;
-
-    var data = {
-      nombre:   nombre,
-      email:    email,
-      empresa:  empresa,
-      cargo:    cargo,
-      telefono: prefijo + ' ' + telefono
-    };
-
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }).then(function() {
-      form.style.display = 'none';
-      successState.style.display = 'block';
-      notifyHeight();
-    }).catch(function() {
-      alert('Hubo un error al enviar. Intenta nuevamente.');
-      btn.textContent = 'Hablar con un asesor comercial';
-      btn.disabled = false;
-    });
-  });
-
-  function showError(input) {
-    input.classList.add('has-error');
-    var field = input.closest('.field');
-    if (field) {
-      var msg = field.querySelector('.err-msg');
-      if (msg) msg.style.display = 'block';
-    }
-  }
 })();
 </script>
 </body>
